@@ -8,12 +8,13 @@ const config: NuxtConfig = {
   ],
 
   csurf: {
-    https: false, // not https at the moment (development)
+    https: process.env.NODE_ENV === 'production', // not https at the moment (development)
     cookieKey: 'csrf', // not https at the moment (development)
     cookie: { // CookieSerializeOptions
       path: '/',
       httpOnly: true,
-      sameSite: 'strict'
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production', // not https at the moment (development)
     },
     methodsToProtect: ['POST', 'PUT', 'PATCH', 'DELETE'], // i have added DELETE
     encryptAlgorithm: 'AES-CBC', // i am on serverless (cloudflare pages)
