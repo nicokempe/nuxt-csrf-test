@@ -23,8 +23,8 @@ const submitApplicationForm = async () => {
   };
 
   try {
-    const response = await fetch('/api/application', {
-      method: 'POST',
+    const response = await useCsrfFetch('/api/application', {
+      method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
