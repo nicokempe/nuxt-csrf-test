@@ -23,7 +23,9 @@ const submitApplicationForm = async () => {
   };
 
   try {
-    const response = await useCsrfFetch('/api/application', {
+    const { $csrfFetch } = useNuxtApp()
+    // @ts-ignore
+    const { response } = await $csrfFetch('/api/application', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
